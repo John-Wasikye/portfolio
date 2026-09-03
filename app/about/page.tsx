@@ -14,16 +14,19 @@ export default function AboutPage() {
       <div className="flex flex-col items-start gap-8 sm:flex-row sm:items-center">
         <div
           aria-hidden="true"
-          className="flex size-28 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent to-orange-700 font-mono text-3xl font-semibold text-accent-foreground"
+          className="flex size-28 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent to-[#2E5CA3] font-mono text-3xl font-semibold text-accent-foreground"
         >
           JW
         </div>
-        <div>
-          <h1 className="text-3xl font-semibold tracking-tight text-foreground">
-            {siteConfig.name}
-          </h1>
-          <p className="mt-2 text-muted-foreground">{siteConfig.about.intro}</p>
-        </div>
+        <h1 className="text-3xl font-semibold tracking-tight text-foreground">
+          {siteConfig.name}
+        </h1>
+      </div>
+
+      <div className="mt-8 flex flex-col gap-4 text-muted-foreground">
+        {siteConfig.about.paragraphs.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
       </div>
 
       <section className="mt-12 border-t border-border pt-8">

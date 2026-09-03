@@ -3,15 +3,15 @@ import type { Project, ProjectMedia } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 const CATEGORY_STYLES: Record<string, { gradient: string; icon: typeof Folder }> = {
-  AI: { gradient: "from-violet-500 to-indigo-600", icon: BrainCircuit },
-  Data: { gradient: "from-teal-500 to-cyan-600", icon: Database },
-  Web: { gradient: "from-orange-500 to-amber-600", icon: Globe },
-  Mobile: { gradient: "from-rose-500 to-pink-600", icon: Smartphone },
+  AI: { gradient: "from-[#A99CE0] to-[#7A69C7]", icon: BrainCircuit },
+  Data: { gradient: "from-[#5EC7B7] to-[#379E8F]", icon: Database },
+  Web: { gradient: "from-[#8FB0E3] to-[#5580BE]", icon: Globe },
+  Mobile: { gradient: "from-[#E39FB9] to-[#BD7292]", icon: Smartphone },
 };
 
 function CategoryPlaceholder({ project }: { project: Project }) {
   const style = CATEGORY_STYLES[project.category] ?? {
-    gradient: "from-zinc-500 to-zinc-700",
+    gradient: "from-zinc-400 to-zinc-600",
     icon: Folder,
   };
   const Icon = style.icon;

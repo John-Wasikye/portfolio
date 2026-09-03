@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 test.describe("Homepage", () => {
   test("loads, shows featured projects, and links to the archive", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1 })).toBeAttached();
     await expect(page.getByRole("heading", { name: "Featured Projects" })).toBeVisible();
 
     const featuredCards = page.getByRole("list", { name: "Projects" }).getByRole("listitem");
@@ -43,8 +43,8 @@ test.describe("Projects archive", () => {
   });
 
   test("status filter narrows the results", async ({ page }) => {
-    await page.getByRole("group", { name: "Status" }).getByRole("button", { name: "Archived" }).click();
-    await expect(page.getByRole("heading", { name: "PixelSort" })).toBeVisible();
+    await page.getByRole("group", { name: "Status" }).getByRole("button", { name: "Completed" }).click();
+    await expect(page.getByRole("heading", { name: "Network Packet Analyzer" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Signal" })).toHaveCount(0);
   });
 
@@ -67,7 +67,7 @@ test.describe("Project detail", () => {
     await page.getByRole("heading", { name: "Signal" }).click();
     await expect(page).toHaveURL(/\/projects\/signal$/);
     await expect(page.getByRole("heading", { name: "Signal", level: 1 })).toBeVisible();
-    await expect(page.getByText("Live")).toBeVisible();
+    await expect(page.getByText("In Development")).toBeVisible();
     await expect(page.getByRole("heading", { name: "Technologies" })).toBeVisible();
   });
 

@@ -7,9 +7,9 @@
   --muted-foreground: #52525b;
   --border: #e4e3de;
   --surface: #ffffff;
-  --accent: #ff5a1f;
-  --accent-foreground: #fffaf7;
-  --focus-ring: #ff5a1f;
+  --accent: #3d6fc4;
+  --accent-foreground: #f8faff;
+  --focus-ring: #3d6fc4;
 }
 
 @theme inline {
