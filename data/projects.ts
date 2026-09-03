@@ -145,4 +145,30 @@ export const projects: Project[] = [
     displayOrder: 6,
     createdAt: "2024-03-15",
   },
+  {
+    slug: "network-packet-analyzer",
+    name: "Network Packet Analyzer",
+    shortDescription:
+      "A C++ tool for capturing and analyzing network packets in real time.",
+    longDescription:
+      "A command-line network packet analyzer for Linux, built to capture live traffic and display it as it arrives. It enumerates available network interfaces, opens one for live capture, and renders packet activity in a terminal UI as packets come in.",
+    category: "Systems",
+    technologies: ["C++", "libpcap", "ncurses", "CMake"],
+    status: "in-development",
+    visible: true,
+    featured: false,
+    displayOrder: 7,
+    githubUrl: "https://github.com/John-Wasikye/Network_Packet_Analyzer",
+    features: [
+      "Enumerates and lists available network interfaces",
+      "Live packet capture via libpcap",
+      "Real-time capture output rendered with ncurses",
+      "Graceful shutdown on SIGINT",
+    ],
+    architecture:
+      "A CMake-built C++ application. libpcap handles interface discovery and packet capture, invoking a callback per captured packet; ncurses owns the terminal and redraws capture output in place as packets arrive.",
+    futurePlans:
+      "Parse and display packet contents (protocol, source/destination, size breakdown) instead of just capture length, and let the user choose which interface to capture from.",
+    createdAt: "2024-06-03",
+  },
 ];
