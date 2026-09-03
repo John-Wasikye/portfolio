@@ -1,8 +1,7 @@
 /**
  * Central site configuration.
  *
- * Edit the values below to personalize the site. `social.github` and
- * `social.linkedin` are placeholders — update them before deploying.
+ * Edit the values below to personalize the site.
  */
 export const siteConfig = {
   name: "John Wasikye",
@@ -18,10 +17,8 @@ export const siteConfig = {
       "I'm John Wasikye, a software developer who builds working projects across AI, data, web, and mobile. I care more about shipping things that run in the real world than writing about them.",
   },
   social: {
-    // TODO: replace with your real GitHub profile URL
-    github: "https://github.com/your-username",
-    // TODO: replace with your real LinkedIn profile URL
-    linkedin: "https://www.linkedin.com/in/your-username",
+    github: "https://github.com/John-Wasikye",
+    linkedin: "https://www.linkedin.com/in/john-wasikye-33309b1b2",
   },
   nav: [
     { label: "Projects", href: "/projects" },

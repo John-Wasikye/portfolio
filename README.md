@@ -4,11 +4,12 @@ A project-first developer portfolio and long-term project archive, built with Ne
 
 ## Before you deploy
 
-A few things use placeholder values and should be updated first:
+One thing still uses placeholder/sample content:
 
-1. **[`lib/site-config.ts`](./lib/site-config.ts)** — set `social.github` and `social.linkedin` to your real profile URLs, and confirm `email`.
-2. **[`data/projects.ts`](./data/projects.ts)** — replace the sample projects with your real ones (see below). Remove or edit anything you don't want public.
-3. **`.env.example`** — copy to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to your production domain (used for canonical URLs, Open Graph tags, and the sitemap).
+1. **[`data/projects.ts`](./data/projects.ts)** — replace the sample projects with your real ones (see below). Remove or edit anything you don't want public.
+2. **`.env.example`** — copy to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to your production domain (used for canonical URLs, Open Graph tags, and the sitemap).
+
+`lib/site-config.ts` already has your real GitHub, LinkedIn, and email.
 
 ## Getting started
 
