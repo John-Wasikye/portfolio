@@ -1,17 +1,33 @@
 # John.Wasikye — Developer Portfolio
 
-A project-first developer portfolio and long-term project archive, built with Next.js, TypeScript, and Tailwind CSS. See [`PRODUCT_AND_TECHNICAL_SPEC.md`](./PRODUCT_AND_TECHNICAL_SPEC.md) for the full product and technical spec this implements.
+A searchable archive of projects I've built, spanning AI, data, web, and mobile. Each project has its own page with a description, the tech used, and links to the code and live app where available.
 
-## Before you deploy
+Built with Next.js 16, React 19, and TypeScript. Fully static, no backend or database.
 
-One thing still uses placeholder/sample content:
+## Features
 
-1. **[`data/projects.ts`](./data/projects.ts)** — replace the sample projects with your real ones (see below). Remove or edit anything you don't want public.
-2. **`.env.example`** — copy to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to your production domain (used for canonical URLs, Open Graph tags, and the sitemap).
+- **Featured + full archive** — a curated set of projects on the homepage, with the complete history at [`/projects`](/projects)
+- **Search, filter, and sort** — by keyword, category, technology, and status, all client-side against local data
+- **Variable-depth project pages** — a project can be a name, description, and a link, or a full write-up with architecture, challenges, and lessons learned; only sections with real content render
+- **Data-driven categories and technologies** — filters are generated from the project data, not hardcoded
+- **Accessible by default** — semantic landmarks, a skip link, visible focus states, keyboard-operable filters, and `prefers-reduced-motion` support
+- **Fast** — every route is statically generated at build time; no client-side data fetching for content
 
-`lib/site-config.ts` already has your real GitHub, LinkedIn, and email.
+## Tech stack
+
+| | |
+| --- | --- |
+| Framework | [Next.js](https://nextjs.org) (App Router) |
+| Language | TypeScript, strict mode |
+| Styling | [Tailwind CSS](https://tailwindcss.com) v4 |
+| Icons | [lucide-react](https://lucide.dev), [react-icons](https://react-icons.github.io/react-icons/) |
+| Unit / component tests | [Vitest](https://vitest.dev), [React Testing Library](https://testing-library.com/react) |
+| End-to-end tests | [Playwright](https://playwright.dev) |
+| Analytics | [`@vercel/analytics`](https://vercel.com/docs/analytics) (no-op off Vercel) |
 
 ## Getting started
+
+Requires Node.js 20+.
 
 ```bash
 npm install
@@ -19,6 +35,20 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+## Project structure
+
+```
+app/                  Routes (App Router)
+  page.tsx              Homepage
+  projects/             Archive (/projects) and detail pages (/projects/[slug])
+  about/                About page
+components/           UI components (cards, filters, nav, footer, ...)
+lib/                  Data access, filtering/sorting logic, site config, types
+data/projects.ts      All project content — the site's only content source
+tests/                Vitest + React Testing Library specs
+e2e/                  Playwright specs
+```
 
 ## Adding a project
 
@@ -29,7 +59,7 @@ Every project on the site comes from one file: [`data/projects.ts`](./data/proje
   slug: "my-project",        // becomes the URL: /projects/my-project
   name: "My Project",
   shortDescription: "One sentence describing what it does.",
-  category: "Web",           // AI, Data, Web, Mobile, or any new category you introduce
+  category: "Web",           // AI, Data, Web, Mobile, or any new category
   technologies: ["TypeScript", "Next.js"],
   status: "live",            // "live" | "in-development" | "completed" | "archived"
   visible: true,             // false hides it everywhere without deleting the data
@@ -40,9 +70,9 @@ Every project on the site comes from one file: [`data/projects.ts`](./data/proje
 }
 ```
 
-Everything else (`longDescription`, `media`, `features`, `metrics`, `architecture`, `technicalDetails`, `challenges`, `lessonsLearned`, `futurePlans`) is optional — a project detail page only renders the sections that have content, so a project can be as shallow or as deep as it deserves. Full field reference in [`lib/types.ts`](./lib/types.ts).
+Everything else (`longDescription`, `media`, `features`, `metrics`, `architecture`, `technicalDetails`, `challenges`, `lessonsLearned`, `futurePlans`) is optional — a project detail page only renders the sections that have content. Full field reference in [`lib/types.ts`](./lib/types.ts).
 
-If a project has no `media`, its card and detail page show a generated placeholder instead of a broken image — never fabricate a screenshot or a metric that isn't real.
+If a project has no `media`, its card and detail page fall back to a generated placeholder instead of a broken image. Metrics and evidence should only ever reflect something real.
 
 ## Scripts
 
@@ -57,14 +87,10 @@ If a project has no `media`, its card and detail page show a generated placehold
 | `npm run test:watch` | Same, in watch mode |
 | `npm run test:e2e` | End-to-end tests (Playwright) — builds and serves the app first |
 
-## Architecture notes
+## Deployment
 
-- **No backend, no database, no CMS.** Project data is a plain TypeScript file (`data/projects.ts`), imported directly by the pages that need it. Every page is statically generated at build time.
-- **GitHub is not mirrored automatically.** Each project's `githubUrl`/`liveUrl` is set manually in the data file, so you control exactly what appears on the site.
-- **Deployment-platform agnostic.** This is a standard Next.js app — it deploys to Vercel, but nothing depends on Vercel-only features. `@vercel/analytics` is a no-op when not running on Vercel.
-- **Light theme only, desktop-first.** Dark mode and mobile-specific layouts are deferred by design (see the spec's Phase 2 / Non-Goals). Components avoid hardcoded pixel dimensions so that work isn't blocked later.
-- **Accessibility is not deferred.** Semantic landmarks, a skip link, visible focus states, `aria-pressed` filter controls, and `prefers-reduced-motion` support are all in place from V1.
+Standard Next.js app — deploys anywhere Node.js runs, no platform lock-in. For Vercel: import the repo at [vercel.com/new](https://vercel.com/new) and set `NEXT_PUBLIC_SITE_URL` (see `.env.example`) as an environment variable. Elsewhere: `npm run build` then `npm run start`, or containerize with a standard Next.js Dockerfile.
 
-## Deploying
+## Documentation
 
-Any Node.js-compatible host works. For Vercel: push to a Git repository and import it at [vercel.com/new](https://vercel.com/new), setting `NEXT_PUBLIC_SITE_URL` as an environment variable. For anywhere else: `npm run build` then `npm run start`, or containerize it with a standard Next.js Dockerfile.
+[`PRODUCT_AND_TECHNICAL_SPEC.md`](./PRODUCT_AND_TECHNICAL_SPEC.md) has the full product and technical spec this repo implements.
