@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site-config";
 export function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/80 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-6">
+      <div className="mx-auto flex min-h-16 max-w-6xl flex-wrap items-center justify-between gap-x-3 gap-y-2 px-4 py-3 sm:gap-x-6 sm:px-6 sm:py-0">
         <Link
           href="/"
           className="font-mono text-base font-semibold tracking-tight text-foreground transition-colors hover:text-accent"
@@ -13,8 +13,8 @@ export function Navbar() {
           John<span className="text-accent">.</span>Wasikye
         </Link>
 
-        <nav aria-label="Primary" className="flex items-center gap-6">
-          <ul className="flex items-center gap-6 text-sm font-medium text-foreground">
+        <nav aria-label="Primary" className="flex items-center gap-3 sm:gap-6">
+          <ul className="flex items-center gap-3 text-sm font-medium text-foreground sm:gap-6">
             {siteConfig.nav.map((item) => (
               <li key={item.href}>
                 <Link
@@ -27,7 +27,7 @@ export function Navbar() {
             ))}
           </ul>
 
-          <div className="flex items-center gap-4 border-l border-border pl-6">
+          <div className="flex items-center gap-3 border-l border-border pl-3 sm:gap-4 sm:pl-6">
             <a
               href={siteConfig.social.github}
               target="_blank"
