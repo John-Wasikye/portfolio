@@ -11,140 +11,10 @@ import type { Project } from "@/lib/types";
  * `featured` controls whether it appears in the homepage's Featured section.
  * `displayOrder` controls curated sort order (lower numbers first).
  *
- * The entries below are placeholder sample projects so the site has real
- * content to render out of the box. Replace `githubUrl` / `liveUrl` with
- * real links, and swap in genuine screenshots, metrics, and write-ups
- * before publishing — never invent metrics or evidence.
+ * Only list real projects here, and never invent metrics or evidence. Add
+ * `githubUrl` / `liveUrl` / `metrics` only once they exist.
  */
 export const projects: Project[] = [
-  {
-    slug: "signal",
-    name: "Signal",
-    shortDescription:
-      "An AI-powered document Q&A tool built on retrieval-augmented generation.",
-    longDescription:
-      "Signal lets you upload long technical documents and ask natural-language questions against them. It chunks and embeds documents, retrieves the most relevant passages for a query, and asks an LLM to answer strictly from that retrieved context so responses stay grounded in the source material.",
-    category: "AI",
-    technologies: ["Python", "FastAPI", "PostgreSQL", "pgvector", "Next.js", "TypeScript"],
-    status: "in-development",
-    visible: true,
-    featured: true,
-    displayOrder: 2,
-    features: [
-      "Drag-and-drop document ingestion with automatic chunking",
-      "Vector search over document embeddings",
-      "Source-grounded answers with citations back to the original passage",
-      "Conversation history per document",
-    ],
-    architecture:
-      "A Next.js frontend talks to a FastAPI backend over a small REST API. Uploaded documents are chunked, embedded, and stored in Postgres using pgvector. At query time, the backend embeds the question, retrieves the top-k nearest chunks, and passes them to the LLM as grounding context before returning a cited answer to the client.",
-    technicalDetails:
-      "Chunking uses a sliding window with overlap to avoid splitting answers across chunk boundaries. Retrieval combines vector similarity with a lightweight keyword filter to reduce irrelevant matches on short, keyword-heavy queries.",
-    challenges:
-      "The hardest problem was keeping answers grounded — early versions occasionally answered from the model's general knowledge instead of the uploaded document. Tightening the prompt to require explicit citations, and rejecting answers with no supporting chunk, fixed most of it.",
-    lessonsLearned:
-      "Retrieval quality mattered far more than model choice. Most bad answers traced back to bad chunking or retrieval, not the LLM itself.",
-    futurePlans: "Support multi-document reasoning and add a shareable read-only link per conversation.",
-    createdAt: "2025-02-01",
-    updatedAt: "2026-06-15",
-  },
-  {
-    slug: "orbit-analytics",
-    name: "Orbit Analytics",
-    shortDescription:
-      "A real-time data pipeline and dashboard for tracking product usage metrics.",
-    longDescription:
-      "Orbit ingests application events, aggregates them into rollups on a schedule, and serves a dashboard for exploring usage trends over time without querying raw event tables directly.",
-    category: "Data",
-    technologies: ["Python", "PostgreSQL", "FastAPI", "React", "Docker"],
-    status: "in-development",
-    visible: true,
-    featured: true,
-    displayOrder: 3,
-    features: [
-      "Event ingestion API with schema validation",
-      "Scheduled rollup jobs for daily/weekly aggregates",
-      "Interactive dashboard with date-range filtering",
-    ],
-    architecture:
-      "Events land in a raw Postgres table via a FastAPI ingestion endpoint. A scheduled worker aggregates raw events into rollup tables, which the dashboard queries directly for fast reads regardless of raw event volume.",
-    challenges:
-      "Rollup jobs needed to be idempotent so a failed and re-run job wouldn't double-count events. Rollups are computed by full recomputation of the affected time window rather than incrementally, which is simpler and easy to reason about.",
-    createdAt: "2024-08-10",
-    updatedAt: "2025-01-20",
-  },
-  {
-    slug: "routine",
-    name: "Routine",
-    shortDescription: "A cross-platform habit-tracking app with offline-first sync.",
-    longDescription:
-      "Routine is a habit tracker that works fully offline and syncs across devices when a connection is available, so tracking a habit never depends on network status.",
-    category: "Mobile",
-    technologies: ["React Native", "TypeScript", "SQLite", "Expo"],
-    status: "in-development",
-    visible: true,
-    featured: true,
-    displayOrder: 4,
-    features: [
-      "Fully offline habit tracking backed by local SQLite",
-      "Background sync with conflict resolution when back online",
-      "Home screen widgets for quick logging",
-    ],
-    challenges:
-      "Reconciling offline edits made on two devices before either had synced required a simple last-write-wins strategy per habit-entry, accepting the tradeoff in favor of implementation simplicity.",
-    createdAt: "2025-05-01",
-    updatedAt: "2025-11-02",
-  },
-  {
-    slug: "marketframe",
-    name: "MarketFrame",
-    shortDescription:
-      "A web app for building and sharing interactive market research dashboards.",
-    longDescription:
-      "MarketFrame lets a user upload a CSV of survey or market data and assemble it into a shareable dashboard of charts without writing any code.",
-    category: "Web",
-    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Prisma", "PostgreSQL"],
-    status: "in-development",
-    visible: true,
-    featured: true,
-    displayOrder: 5,
-    features: [
-      "CSV import with automatic column type detection",
-      "Drag-and-drop chart builder",
-      "Shareable, read-only dashboard links",
-    ],
-    futurePlans: "Add scheduled data refresh from a connected Google Sheet.",
-    createdAt: "2026-01-10",
-    updatedAt: "2026-08-20",
-  },
-  {
-    slug: "pixelsort",
-    name: "PixelSort",
-    shortDescription: "A CLI tool for organizing large image datasets by visual similarity.",
-    category: "Data",
-    technologies: ["Python", "scikit-learn", "OpenCV"],
-    status: "in-development",
-    visible: true,
-    featured: false,
-    displayOrder: 6,
-    features: [
-      "Extracts image feature vectors and clusters visually similar images",
-      "Outputs a sorted directory structure for manual review",
-    ],
-    createdAt: "2023-09-05",
-  },
-  {
-    slug: "latticeboard",
-    name: "LatticeBoard",
-    shortDescription: "A minimal kanban board for small teams.",
-    category: "Web",
-    technologies: ["TypeScript", "React", "Node.js", "Express", "MongoDB"],
-    status: "in-development",
-    visible: true,
-    featured: false,
-    displayOrder: 7,
-    createdAt: "2024-03-15",
-  },
   {
     slug: "network-packet-analyzer",
     name: "Network Packet Analyzer",
@@ -170,5 +40,32 @@ export const projects: Project[] = [
     futurePlans:
       "Parse and display packet contents (protocol, source/destination, size breakdown) instead of just capture length, and let the user choose which interface to capture from.",
     createdAt: "2024-06-03",
+  },
+  {
+    slug: "nfl-player-performance",
+    name: "NFL Player Performance",
+    shortDescription:
+      "A daily-updating NFL data pipeline that ranks players by position, built on AWS with Docker.",
+    longDescription:
+      "A data engineering project that pulls current-season NFL stats every day, cleans and models them, and publishes position rankings (QB, RB, WR, TE, K) to a website. Each position gets two ranking views side by side: a composite performance score and PPR fantasy points, with weekly snapshots to show rank movement. The architecture and ranking method are designed; building the pipeline is the next step. A mobile app is planned as a second phase.",
+    category: "Data",
+    technologies: ["Python", "Docker", "AWS", "Terraform", "dbt", "DuckDB", "Athena", "S3"],
+    status: "in-development",
+    visible: true,
+    featured: true,
+    displayOrder: 2,
+    features: [
+      "Daily ingestion of NFL stats from the open nflverse datasets",
+      "Position rankings using a composite score of efficiency and production, plus a PPR fantasy view",
+      "Weekly rank snapshots to show players moving up or down",
+      "Data quality tests on every run",
+      "Backtest of the ranking method on past seasons, with a public methodology page",
+    ],
+    architecture:
+      "A scheduled container task on AWS (EventBridge and ECS Fargate) ingests raw data into an S3 data lake, dbt models it into staging and mart layers, and a publish step writes rankings as JSON behind CloudFront for the website. Infrastructure is defined in Terraform, and the same Docker image runs locally and in the cloud.",
+    futurePlans:
+      "Add defensive player rankings, and build a mobile app on the same published data.",
+    createdAt: "2026-09-18",
+    updatedAt: "2026-09-18",
   },
 ];

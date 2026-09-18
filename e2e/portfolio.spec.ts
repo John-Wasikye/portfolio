@@ -21,31 +21,32 @@ test.describe("Projects archive", () => {
 
   test("loads with the full project list", async ({ page }) => {
     await expect(page.getByRole("heading", { name: "Projects", level: 1 })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "Signal" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "NFL Player Performance" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Network Packet Analyzer" })).toBeVisible();
   });
 
   test("search narrows the results", async ({ page }) => {
-    await page.getByLabel("Search projects").fill("Routine");
-    await expect(page.getByRole("heading", { name: "Routine" })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "Signal" })).toHaveCount(0);
+    await page.getByLabel("Search projects").fill("NFL");
+    await expect(page.getByRole("heading", { name: "NFL Player Performance" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Network Packet Analyzer" })).toHaveCount(0);
   });
 
   test("category filter narrows the results", async ({ page }) => {
-    await page.getByRole("group", { name: "Categories" }).getByRole("button", { name: "Mobile" }).click();
-    await expect(page.getByRole("heading", { name: "Routine" })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "Signal" })).toHaveCount(0);
+    await page.getByRole("group", { name: "Categories" }).getByRole("button", { name: "Data" }).click();
+    await expect(page.getByRole("heading", { name: "NFL Player Performance" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Network Packet Analyzer" })).toHaveCount(0);
   });
 
   test("technology filter narrows the results", async ({ page }) => {
-    await page.getByLabel("Technology").selectOption("Expo");
-    await expect(page.getByRole("heading", { name: "Routine" })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "Signal" })).toHaveCount(0);
+    await page.getByLabel("Technology").selectOption("Docker");
+    await expect(page.getByRole("heading", { name: "NFL Player Performance" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Network Packet Analyzer" })).toHaveCount(0);
   });
 
   test("status filter narrows the results", async ({ page }) => {
     await page.getByRole("group", { name: "Status" }).getByRole("button", { name: "Completed" }).click();
     await expect(page.getByRole("heading", { name: "Network Packet Analyzer" })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "Signal" })).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "NFL Player Performance" })).toHaveCount(0);
   });
 
   test("sorting changes the order without changing the result count", async ({ page }) => {
@@ -55,8 +56,8 @@ test.describe("Projects archive", () => {
   });
 
   test("combined filters can produce an empty state", async ({ page }) => {
-    await page.getByRole("group", { name: "Categories" }).getByRole("button", { name: "AI" }).click();
-    await page.getByLabel("Technology").selectOption("Expo");
+    await page.getByRole("group", { name: "Categories" }).getByRole("button", { name: "Systems" }).click();
+    await page.getByLabel("Technology").selectOption("Docker");
     await expect(page.getByText("No projects found.")).toBeVisible();
   });
 });
@@ -64,18 +65,18 @@ test.describe("Projects archive", () => {
 test.describe("Project detail", () => {
   test("opens from a project card and shows core project info", async ({ page }) => {
     await page.goto("/projects");
-    await page.getByRole("heading", { name: "Signal" }).click();
-    await expect(page).toHaveURL(/\/projects\/signal$/);
-    await expect(page.getByRole("heading", { name: "Signal", level: 1 })).toBeVisible();
+    await page.getByRole("heading", { name: "NFL Player Performance" }).click();
+    await expect(page).toHaveURL(/\/projects\/nfl-player-performance$/);
+    await expect(page.getByRole("heading", { name: "NFL Player Performance", level: 1 })).toBeVisible();
     await expect(page.getByText("In Development")).toBeVisible();
     await expect(page.getByRole("heading", { name: "Technologies" })).toBeVisible();
   });
 
   test("hides optional sections and buttons that have no data", async ({ page }) => {
-    await page.goto("/projects/latticeboard");
+    await page.goto("/projects/nfl-player-performance");
     await expect(page.getByRole("link", { name: "Live Project" })).toHaveCount(0);
     await expect(page.getByRole("link", { name: "GitHub Repository" })).toHaveCount(0);
-    await expect(page.getByRole("heading", { name: "Key Features" })).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "Results" })).toHaveCount(0);
   });
 
   test("returns a 404 page for an unknown project slug", async ({ page }) => {
