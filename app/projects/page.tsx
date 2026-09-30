@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Projects",
   description:
     "Browse the full archive of software, data, AI, web, and mobile projects built by John Wasikye.",
+  alternates: { canonical: "/projects" },
 };
 
 export default function ProjectsPage() {

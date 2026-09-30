@@ -6,6 +6,7 @@ import { siteConfig } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "About",
   description: `A short introduction to ${siteConfig.name} and how to get in touch.`,
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
