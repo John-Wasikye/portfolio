@@ -89,7 +89,7 @@ If a project has no `media`, its card and detail page fall back to a generated p
 
 ## Deployment
 
-Standard Next.js app — deploys anywhere Node.js runs, no platform lock-in. For Vercel: import the repo at [vercel.com/new](https://vercel.com/new) and set `NEXT_PUBLIC_SITE_URL` (see `.env.example`) as an environment variable. Elsewhere: `npm run build` then `npm run start`, or containerize with a standard Next.js Dockerfile.
+Standard Next.js app — deploys anywhere Node.js runs, no platform lock-in. For Vercel: import the repo at [vercel.com/new](https://vercel.com/new) and set `SITE_URL` (see `.env.example`) as an environment variable. Elsewhere: `npm run build` then `npm run start`, or containerize with a standard Next.js Dockerfile.
 
 ## Documentation
 

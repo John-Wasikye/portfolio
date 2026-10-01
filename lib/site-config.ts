@@ -9,7 +9,7 @@ export const siteConfig = {
   title: "John.Wasikye | Developer Portfolio",
   description:
     "I'm John Wasikye. I like building anything that interests me, and adding those projects to this site.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.johnwasikye.com",
+  url: process.env.SITE_URL ?? "https://www.johnwasikye.com",
   email: "john.wasikye@gmail.com",
   about: {
     short:
