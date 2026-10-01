@@ -6,6 +6,7 @@ import { FaGithub } from "react-icons/fa6";
 import { StatusBadge } from "@/components/StatusBadge";
 import { ProjectVisual } from "@/components/ProjectVisual";
 import { getAllSlugs, getProjectBySlug } from "@/lib/projects";
+import { siteConfig } from "@/lib/site-config";
 import { formatDate } from "@/lib/utils";
 
 export function generateStaticParams() {
@@ -29,6 +30,12 @@ export async function generateMetadata({
     openGraph: {
       title: project.name,
       description: project.shortDescription,
+      // A project page is a dated, authored write-up rather than a landing
+      // page, so it gets article metadata. Omitted dates simply don't render.
+      type: "article",
+      publishedTime: project.createdAt,
+      modifiedTime: project.updatedAt,
+      authors: [siteConfig.name],
       images: project.media?.[0]?.type === "image" ? [project.media[0].src] : undefined,
     },
   };
