@@ -9,7 +9,7 @@ export const siteConfig = {
   title: "John.Wasikye — Developer Portfolio",
   description:
     "A project-first developer portfolio and long-term project archive for John Wasikye, spanning AI, data, web, and mobile projects.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://johnwasikye.dev",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://johnwasikye.com",
   email: "john.wasikye@gmail.com",
   about: {
     short:
