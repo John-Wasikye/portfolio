@@ -114,8 +114,10 @@ export function ProjectFilters({
         options={STATUS_OPTIONS.map((value) => ({ value, label: STATUS_LABELS[value] }))}
       />
 
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
+      {/* Side by side while the sidebar is full width, stacked once it
+          becomes the narrow lg column. */}
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end lg:flex-col lg:items-stretch">
+        <div className="min-w-0 sm:flex-1 lg:w-full">
           <label
             htmlFor="technology-filter"
             className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted"
@@ -126,7 +128,7 @@ export function ProjectFilters({
             id="technology-filter"
             value={technology}
             onChange={(event) => onTechnologyChange(event.target.value)}
-            className="rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent"
+            className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent"
           >
             <option value="all">All technologies</option>
             {technologies.map((tech) => (
@@ -137,7 +139,7 @@ export function ProjectFilters({
           </select>
         </div>
 
-        <div>
+        <div className="min-w-0 sm:flex-1 lg:w-full">
           <label
             htmlFor="sort-order"
             className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted"
@@ -148,7 +150,7 @@ export function ProjectFilters({
             id="sort-order"
             value={sort}
             onChange={(event) => onSortChange(event.target.value as SortOption)}
-            className="rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent"
+            className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent"
           >
             {SORT_OPTIONS.map((option) => (
               <option key={option} value={option}>
