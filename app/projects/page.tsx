@@ -18,7 +18,7 @@ export default function ProjectsPage() {
     <div className="mx-auto max-w-6xl px-6 py-16">
       <h1 className="text-3xl font-semibold tracking-tight text-foreground">Projects</h1>
       <p className="mt-2 max-w-2xl text-muted-foreground">
-        The complete archive of things I&rsquo;ve built — search, filter, and sort to
+        The complete archive of things I&rsquo;ve built. Search, filter, and sort to
         find what you&rsquo;re looking for.
       </p>
 
