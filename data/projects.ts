@@ -45,27 +45,29 @@ export const projects: Project[] = [
     slug: "nfl-player-performance",
     name: "NFL Player Performance",
     shortDescription:
-      "A daily-updating NFL data pipeline that ranks players by position, built on AWS with Docker.",
+      "An NFL data pipeline that ranks players by position and predicts each week's results, with the AWS deployment in progress.",
     longDescription:
-      "A data engineering project that pulls current-season NFL stats every day, cleans and models them, and publishes position rankings (QB, RB, WR, TE, K) to a website. Each position gets two ranking views side by side: a composite performance score and PPR fantasy points, with weekly snapshots to show rank movement. The architecture and ranking method are designed; building the pipeline is the next step. A mobile app is planned as a second phase.",
+      "A data engineering project that pulls NFL stats from the open nflverse datasets, cleans and models them with dbt on DuckDB, and publishes position rankings (QB, RB, WR, TE, K) to a website. Each position has two views side by side: a composite performance score and PPR fantasy points, with weekly snapshots showing rank movement. A weekly prediction engine projects each player's next game with a range, locks the forecast before kickoff, and grades it afterwards, and a public report card shows how it does against simple baselines. The pipeline, website and prediction engine run locally in Docker; deploying them to AWS with Terraform is in progress. A mobile app is planned as a second phase.",
     category: "Data",
-    technologies: ["Python", "Docker", "AWS", "Terraform", "dbt", "DuckDB", "Athena", "S3"],
+    technologies: ["Python", "Docker", "AWS", "Terraform", "dbt", "DuckDB", "LightGBM", "Next.js"],
     status: "in-development",
     visible: true,
     featured: true,
     displayOrder: 2,
+    githubUrl: "https://github.com/John-Wasikye/nfl-player-performance",
     features: [
       "Daily ingestion of NFL stats from the open nflverse datasets",
       "Position rankings using a composite score of efficiency and production, plus a PPR fantasy view",
       "Weekly rank snapshots to show players moving up or down",
-      "Data quality tests on every run",
+      "Data quality tests on every run, and a validation gate that blocks a bad or stale publish",
       "Backtest of the ranking method on past seasons, with a public methodology page",
+      "Weekly predictions with ranges, locked before kickoff and graded in a public report card",
     ],
     architecture:
-      "A scheduled container task on AWS (EventBridge and ECS Fargate) ingests raw data into an S3 data lake, dbt models it into staging and mart layers, and a publish step writes rankings as JSON behind CloudFront for the website. Infrastructure is defined in Terraform, and the same Docker image runs locally and in the cloud.",
+      "A Python pipeline ingests raw nflverse files, dbt models them into staging and mart layers on DuckDB, and a publish step writes validated, versioned JSON that a statically exported Next.js site reads. The same Docker image runs locally and is being moved to AWS: a scheduled Fargate task, S3 for storage, CloudFront in front of the site, and the infrastructure defined in Terraform.",
     futurePlans:
-      "Add defensive player rankings, and build a mobile app on the same published data.",
+      "Finish the AWS deployment, add defensive player rankings, and build a mobile app on the same published data.",
     createdAt: "2026-09-18",
-    updatedAt: "2026-09-18",
+    updatedAt: "2026-10-05",
   },
 ];
