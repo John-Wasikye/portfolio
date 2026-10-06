@@ -8,7 +8,7 @@ export function Footer() {
     <footer className="mt-auto border-t border-border">
       <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
         <p className="font-mono text-sm font-semibold text-foreground">
-          John <span className="text-accent">Wasikye</span>
+          John Wasikye
         </p>
 
         <nav aria-label="Footer" className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">

@@ -11,7 +11,7 @@ export function Navbar() {
           href="/"
           className="font-mono text-base font-semibold tracking-tight text-foreground transition-colors hover:text-accent"
         >
-          John <span className="text-accent">Wasikye</span>
+          John Wasikye
         </Link>
 
         <nav aria-label="Primary" className="flex items-center gap-3 sm:gap-6">
