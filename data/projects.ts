@@ -27,7 +27,7 @@ export const projects: Project[] = [
     status: "completed",
     visible: true,
     featured: true,
-    displayOrder: 1,
+    displayOrder: 2,
     githubUrl: "https://github.com/John-Wasikye/Network_Packet_Analyzer",
     media: [
       {
@@ -60,7 +60,7 @@ export const projects: Project[] = [
     status: "live",
     visible: true,
     featured: true,
-    displayOrder: 2,
+    displayOrder: 1,
     githubUrl: "https://github.com/John-Wasikye/nfl-player-performance",
     liveUrl: "https://nflstats.johnwasikye.com",
     media: [

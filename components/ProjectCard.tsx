@@ -49,7 +49,7 @@ export function ProjectCard({ project }: { project: Project }) {
                 rel="noreferrer noopener"
                 className="inline-flex items-center gap-1.5 text-accent hover:underline"
               >
-                Live Demo
+                Live Site
                 <ExternalLink size={14} aria-hidden="true" />
               </a>
             )}

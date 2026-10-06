@@ -69,7 +69,7 @@ test.describe("Project detail", () => {
     await expect(page).toHaveURL(/\/projects\/nfl-player-performance$/);
     await expect(page.getByRole("heading", { name: "NFL Player Performance", level: 1 })).toBeVisible();
     await expect(page.getByText("Live", { exact: true })).toBeVisible();
-    await expect(page.getByRole("link", { name: "Live Project" })).toHaveAttribute(
+    await expect(page.getByRole("link", { name: "Live Site" })).toHaveAttribute(
       "href",
       "https://nflstats.johnwasikye.com",
     );
@@ -82,7 +82,7 @@ test.describe("Project detail", () => {
 
   test("hides optional sections and buttons that have no data", async ({ page }) => {
     await page.goto("/projects/network-packet-analyzer");
-    await expect(page.getByRole("link", { name: "Live Project" })).toHaveCount(0);
+    await expect(page.getByRole("link", { name: "Live Site" })).toHaveCount(0);
     await expect(page.getByRole("heading", { name: "Results" })).toHaveCount(0);
   });
 

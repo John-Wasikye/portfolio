@@ -33,13 +33,13 @@ describe("ProjectCard", () => {
     expect(screen.queryByText("Vitest")).not.toBeInTheDocument();
   });
 
-  it("does not render Live Demo or GitHub links when the URLs are absent", () => {
+  it("does not render Live Site or GitHub links when the URLs are absent", () => {
     render(<ProjectCard project={baseProject} />);
-    expect(screen.queryByRole("link", { name: /live demo/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /live site/i })).not.toBeInTheDocument();
     expect(screen.queryByRole("link", { name: /github/i })).not.toBeInTheDocument();
   });
 
-  it("renders Live Demo and GitHub links when the URLs are present", () => {
+  it("renders Live Site and GitHub links when the URLs are present", () => {
     render(
       <ProjectCard
         project={{
@@ -49,7 +49,7 @@ describe("ProjectCard", () => {
         }}
       />
     );
-    expect(screen.getByRole("link", { name: /live demo/i })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /live site/i })).toHaveAttribute(
       "href",
       "https://example.com"
     );

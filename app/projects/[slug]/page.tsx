@@ -104,7 +104,7 @@ export default async function ProjectDetailPage({
               rel="noreferrer noopener"
               className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground transition-transform hover:scale-[1.02] motion-reduce:transition-none motion-reduce:hover:scale-100"
             >
-              Live Project
+              Live Site
               <ExternalLink size={16} aria-hidden="true" />
             </a>
           )}

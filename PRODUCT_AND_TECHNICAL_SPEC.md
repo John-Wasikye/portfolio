@@ -327,7 +327,7 @@ Project cards should be visual-first and minimal. Each card should primarily con
 
 ### 19.1 Card Interaction
 
-Clicking the card should open `/projects/[slug]`. The card should also support direct actions — Live Demo, GitHub — visually distinguishable from clicking the card itself.
+Clicking the card should open `/projects/[slug]`. The card should also support direct actions — Live Site, GitHub — visually distinguishable from clicking the card itself.
 
 ## 20. Project Media
 
@@ -691,7 +691,7 @@ GitHub integration (automatic repository metadata), advanced project management 
                                         │
                               ┌─────────┴─────────┐
                               │                   │
-                           GitHub             Live Demo
+                           GitHub             Live Site
 
 Deployment:
               Next.js Application
