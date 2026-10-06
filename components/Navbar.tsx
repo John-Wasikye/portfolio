@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import { siteConfig } from "@/lib/site-config";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function Navbar() {
   return (
@@ -47,6 +48,8 @@ export function Navbar() {
               <FaLinkedin size={20} aria-hidden="true" />
             </a>
           </div>
+
+          <ThemeToggle />
         </nav>
       </div>
     </header>

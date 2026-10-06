@@ -10,7 +10,25 @@
   --accent: #3d6fc4;
   --accent-foreground: #f8faff;
   --focus-ring: #3d6fc4;
+  color-scheme: light;
 }
+
+/* The inline script in the root layout always sets data-theme (saved choice, else the system
+   setting) before first paint, so dark only needs this one selector. */
+:root[data-theme="dark"] {
+  --background: #0f1014;
+  --foreground: #ecebe6;
+  --muted: #9a9aa6;
+  --muted-foreground: #b4b4be;
+  --border: #2a2b33;
+  --surface: #17181d;
+  --accent: #5b8fe0;
+  --accent-foreground: #f8faff;
+  --focus-ring: #8fb0e8;
+  color-scheme: dark;
+}
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme inline {
   --color-background: var(--background);
