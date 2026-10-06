@@ -29,6 +29,13 @@ export const projects: Project[] = [
     featured: true,
     displayOrder: 1,
     githubUrl: "https://github.com/John-Wasikye/Network_Packet_Analyzer",
+    media: [
+      {
+        type: "image",
+        src: "/projects/network-packet-analyzer.svg",
+        alt: "Illustration of the Network Packet Analyzer: a terminal listing network interfaces and a live capture",
+      },
+    ],
     features: [
       "Enumerates and lists available network interfaces",
       "Live packet capture via libpcap",
@@ -55,6 +62,13 @@ export const projects: Project[] = [
     featured: true,
     displayOrder: 2,
     githubUrl: "https://github.com/John-Wasikye/nfl-player-performance",
+    media: [
+      {
+        type: "image",
+        src: "/projects/nfl-player-performance.png",
+        alt: "Screenshot of the NFL Player Performance site showing the quarterback rankings table",
+      },
+    ],
     features: [
       "Daily ingestion of NFL stats from the open nflverse datasets",
       "Position rankings using a composite score of efficiency and production, plus a PPR fantasy view",
