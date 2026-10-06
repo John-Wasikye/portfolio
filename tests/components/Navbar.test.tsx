@@ -6,7 +6,7 @@ import { Navbar } from "@/components/Navbar";
 describe("Navbar", () => {
   it("links to the homepage via the wordmark", () => {
     render(<Navbar />);
-    expect(screen.getByRole("link", { name: "John.Wasikye" })).toHaveAttribute("href", "/");
+    expect(screen.getByRole("link", { name: "John Wasikye" })).toHaveAttribute("href", "/");
   });
 
   it("renders primary navigation to Projects and About", () => {

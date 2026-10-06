@@ -5,8 +5,8 @@
  */
 export const siteConfig = {
   name: "John Wasikye",
-  shortName: "John.Wasikye",
-  title: "John.Wasikye | Developer Portfolio",
+  shortName: "John Wasikye",
+  title: "John Wasikye | Developer Portfolio",
   description:
     "I'm John Wasikye. I like building anything that interests me, and adding those projects to this site.",
   url: process.env.SITE_URL ?? "https://www.johnwasikye.com",

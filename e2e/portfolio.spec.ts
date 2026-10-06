@@ -95,7 +95,7 @@ test.describe("Navigation", () => {
     await page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "About" }).click();
     await expect(page).toHaveURL(/\/about$/);
 
-    await page.getByRole("banner").getByRole("link", { name: "John.Wasikye", exact: true }).click();
+    await page.getByRole("banner").getByRole("link", { name: "John Wasikye", exact: true }).click();
     await expect(page).toHaveURL(/\/$/);
   });
 

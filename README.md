@@ -1,4 +1,4 @@
-# John.Wasikye — Developer Portfolio
+# John Wasikye — Developer Portfolio
 
 A searchable archive of projects I've built, spanning AI, data, web, and mobile. Each project has its own page with a description, the tech used, and links to the code and live app where available.
 
