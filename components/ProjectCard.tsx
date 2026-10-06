@@ -7,13 +7,13 @@ import { StatusBadge } from "@/components/StatusBadge";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-surface transition-shadow hover:shadow-lg motion-reduce:transition-none">
+    <article className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-sm transition-shadow hover:shadow-lg motion-reduce:transition-none">
       <div className="transition-transform duration-300 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100">
         <ProjectVisual project={project} />
       </div>
 
       <div className="flex flex-1 flex-col gap-2 p-5">
-        <div className="flex items-start justify-between gap-3">
+        <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-2">
           <h3 className="text-lg font-semibold text-foreground">
             <Link
               href={`/projects/${project.slug}`}
