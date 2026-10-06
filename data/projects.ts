@@ -66,7 +66,7 @@ export const projects: Project[] = [
     media: [
       {
         type: "image",
-        src: "/projects/nfl-player-performance.png",
+        src: "/projects/nfl-player-performance-rankings.png",
         alt: "Screenshot of the NFL Player Performance site showing the quarterback rankings table",
       },
     ],
