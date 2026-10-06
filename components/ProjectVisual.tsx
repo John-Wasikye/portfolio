@@ -77,7 +77,7 @@ export function ProjectVisual({
   return (
     <div
       className={cn(
-        "relative w-full overflow-hidden rounded-xl border border-border bg-surface",
+        "relative w-full overflow-hidden rounded-xl border border-border bg-surface shadow-sm",
         aspect === "video" ? "aspect-video" : "aspect-[21/9]"
       )}
     >
