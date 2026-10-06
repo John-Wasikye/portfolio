@@ -32,8 +32,8 @@ export const projects: Project[] = [
     media: [
       {
         type: "image",
-        src: "/projects/network-packet-analyzer.svg",
-        alt: "Illustration of the Network Packet Analyzer: a terminal listing network interfaces and a live capture",
+        src: "/projects/network-packet-analyzer.png",
+        alt: "The Network Packet Analyzer running in a terminal, listing the available network interfaces",
       },
     ],
     features: [
