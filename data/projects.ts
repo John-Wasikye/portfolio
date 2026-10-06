@@ -86,7 +86,7 @@ export const projects: Project[] = [
   },
   {
     slug: "portfolio-website",
-    name: "Portfolio Website",
+    name: "Project Website",
     shortDescription:
       "This site: a tested, accessible portfolio with dark mode, built with Next.js and deployed on Vercel.",
     longDescription:
