@@ -68,14 +68,21 @@ test.describe("Project detail", () => {
     await page.getByRole("heading", { name: "NFL Player Performance" }).click();
     await expect(page).toHaveURL(/\/projects\/nfl-player-performance$/);
     await expect(page.getByRole("heading", { name: "NFL Player Performance", level: 1 })).toBeVisible();
-    await expect(page.getByText("In Development")).toBeVisible();
+    await expect(page.getByText("Live", { exact: true })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Live Project" })).toHaveAttribute(
+      "href",
+      "https://nflstats.johnwasikye.com",
+    );
+    await expect(page.getByRole("link", { name: "GitHub Repository" })).toHaveAttribute(
+      "href",
+      "https://github.com/John-Wasikye/nfl-player-performance",
+    );
     await expect(page.getByRole("heading", { name: "Technologies" })).toBeVisible();
   });
 
   test("hides optional sections and buttons that have no data", async ({ page }) => {
-    await page.goto("/projects/nfl-player-performance");
+    await page.goto("/projects/network-packet-analyzer");
     await expect(page.getByRole("link", { name: "Live Project" })).toHaveCount(0);
-    await expect(page.getByRole("link", { name: "GitHub Repository" })).toHaveCount(0);
     await expect(page.getByRole("heading", { name: "Results" })).toHaveCount(0);
   });
 

@@ -4,7 +4,7 @@ import type { Project } from "@/lib/types";
  * Portfolio project data.
  *
  * This is the single source of truth for every project shown on the site.
- * To add a project, append an object to this array — no other file needs
+ * To add a project, append an object to this array. No other file needs
  * to change. `slug` becomes the URL at /projects/[slug] and must be unique.
  *
  * `visible` controls whether a project appears anywhere on the public site.
@@ -52,16 +52,17 @@ export const projects: Project[] = [
     slug: "nfl-player-performance",
     name: "NFL Player Performance",
     shortDescription:
-      "An NFL data pipeline that ranks players by position and predicts each week's results, with the AWS deployment in progress.",
+      "An NFL data pipeline, live on AWS, that ranks players by position and predicts each week's results.",
     longDescription:
-      "A data engineering project that pulls NFL stats from the open nflverse datasets, cleans and models them with dbt on DuckDB, and publishes position rankings (QB, RB, WR, TE, K) to a website. Each position has two views side by side: a composite performance score and PPR fantasy points, with weekly snapshots showing rank movement. A weekly prediction engine projects each player's next game with a range, locks the forecast before kickoff, and grades it afterwards, and a public report card shows how it does against simple baselines. The pipeline, website and prediction engine run locally in Docker; deploying them to AWS with Terraform is in progress. A mobile app is planned as a second phase.",
+      "A data engineering and prediction project. It pulls NFL stats from the open nflverse datasets, cleans and models them with dbt on DuckDB, and publishes position rankings (QB, RB, WR, TE, K) to a website, each shown two ways: a composite performance score and PPR fantasy points, with weekly snapshots showing rank movement. On top of that sits a weekly prediction engine. It projects every player's next game with an 80% range, locks the forecast before kickoff, and grades it afterwards in a public report card that compares it with simple baselines. AI is used in a deliberately limited way: Claude Code reads where the model missed most each week and proposes one new feature at a time, and an automated test on held-out weeks decides whether it ships, so no published number is ever produced or adjusted by an LLM. The whole system runs by itself on AWS: a scheduled Fargate task, S3, CloudFront in front of the site, Terraform for the infrastructure, and GitHub Actions deploying through OIDC with no stored credentials. A mobile app is planned as a second phase.",
     category: "Data",
-    technologies: ["Python", "Docker", "AWS", "Terraform", "dbt", "DuckDB", "LightGBM", "Next.js"],
-    status: "in-development",
+    technologies: ["Python", "Docker", "AWS", "Terraform", "dbt", "DuckDB", "LightGBM", "Claude Code", "Next.js"],
+    status: "live",
     visible: true,
     featured: true,
     displayOrder: 2,
     githubUrl: "https://github.com/John-Wasikye/nfl-player-performance",
+    liveUrl: "https://nflstats.johnwasikye.com",
     media: [
       {
         type: "image",
@@ -70,19 +71,19 @@ export const projects: Project[] = [
       },
     ],
     features: [
-      "Daily ingestion of NFL stats from the open nflverse datasets",
-      "Position rankings using a composite score of efficiency and production, plus a PPR fantasy view",
-      "Weekly rank snapshots to show players moving up or down",
-      "Data quality tests on every run, and a validation gate that blocks a bad or stale publish",
-      "Backtest of the ranking method on past seasons, with a public methodology page",
-      "Weekly predictions with ranges, locked before kickoff and graded in a public report card",
+      "Weekly predictions for every QB, RB, WR, TE and K, each with an 80% range, locked before kickoff and graded afterwards in a public report card against simple baselines",
+      "An ensemble of ridge regression and LightGBM, with ranges calibrated on weeks the model never saw; the code refuses to calibrate on its own training rows",
+      "AI-assisted feature search: Claude Code proposes one feature at a time from the model's biggest misses, an automated gate on held-out weeks decides whether it ships, and every result is published in an experiment ledger",
+      "Position rankings using a composite score of efficiency and production, plus a PPR fantasy view, with weekly snapshots to show players moving up or down",
+      "Backtest of the ranking method on past seasons using held-out seasons, with a public methodology page",
+      "Daily ingestion of NFL stats from the open nflverse datasets, data quality tests on every run, and a validation gate that blocks a bad or stale publish",
     ],
     architecture:
-      "A Python pipeline ingests raw nflverse files, dbt models them into staging and mart layers on DuckDB, and a publish step writes validated, versioned JSON that a statically exported Next.js site reads. The same Docker image runs locally and is being moved to AWS: a scheduled Fargate task, S3 for storage, CloudFront in front of the site, and the infrastructure defined in Terraform.",
+      "A Python pipeline ingests raw nflverse files, dbt models them into staging and mart layers on DuckDB, and a publish step writes validated, versioned JSON that a statically exported Next.js site reads. A prediction step builds features that only use games before kickoff, with tests that change a future result and check earlier features do not move, then projects, locks and grades each week. Claude Code sits outside the published numbers: it writes candidate feature code that must pass the gate before it can reach the site. The same Docker image runs locally and on AWS: a scheduled Fargate task, S3 for storage (the records bucket uses Object Lock, so a locked forecast cannot be changed), CloudFront in front of the site, alarms that email on any failure, and the infrastructure defined in Terraform. A guard refuses to lock a forecast once its first kickoff has passed.",
     futurePlans:
-      "Finish the AWS deployment, add defensive player rankings, and build a mobile app on the same published data.",
+      "Add defensive player rankings and build a mobile app on the same published data.",
     createdAt: "2026-09-18",
-    updatedAt: "2026-10-05",
+    updatedAt: "2026-10-06",
   },
   {
     slug: "portfolio-website",

@@ -1,4 +1,4 @@
-# John Wasikye — Developer Portfolio
+# John Wasikye: Developer Portfolio
 
 A searchable archive of projects I've built, spanning AI, data, web, and mobile. Each project has its own page with a description, the tech used, and links to the code and live app where available.
 
@@ -6,12 +6,12 @@ Built with Next.js 16, React 19, and TypeScript. Fully static, no backend or dat
 
 ## Features
 
-- **Featured + full archive** — a curated set of projects on the homepage, with the complete history at [`/projects`](/projects)
-- **Search, filter, and sort** — by keyword, category, technology, and status, all client-side against local data
-- **Variable-depth project pages** — a project can be a name, description, and a link, or a full write-up with architecture, challenges, and lessons learned; only sections with real content render
-- **Data-driven categories and technologies** — filters are generated from the project data, not hardcoded
-- **Accessible by default** — semantic landmarks, a skip link, visible focus states, keyboard-operable filters, and `prefers-reduced-motion` support
-- **Fast** — every route is statically generated at build time; no client-side data fetching for content
+- **Featured and full archive:** a curated set of projects on the homepage, with the complete history at [`/projects`](/projects)
+- **Search, filter, and sort:** by keyword, category, technology, and status, all client-side against local data
+- **Variable-depth project pages:** a project can be a name, description, and a link, or a full write-up with architecture, challenges, and lessons learned. Only sections with real content render
+- **Data-driven categories and technologies:** filters are generated from the project data, not hardcoded
+- **Accessible by default:** semantic landmarks, a skip link, visible focus states, keyboard-operable filters, and `prefers-reduced-motion` support
+- **Fast:** every route is statically generated at build time, with no client-side data fetching for content
 
 ## Tech stack
 
@@ -45,14 +45,14 @@ app/                  Routes (App Router)
   about/                About page
 components/           UI components (cards, filters, nav, footer, ...)
 lib/                  Data access, filtering/sorting logic, site config, types
-data/projects.ts      All project content — the site's only content source
+data/projects.ts      All project content, the site's only content source
 tests/                Vitest + React Testing Library specs
 e2e/                  Playwright specs
 ```
 
 ## Adding a project
 
-Every project on the site comes from one file: [`data/projects.ts`](./data/projects.ts). To add one, append an object to the `projects` array — no other file needs to change:
+Every project on the site comes from one file: [`data/projects.ts`](./data/projects.ts). To add one, append an object to the `projects` array. No other file needs to change:
 
 ```ts
 {
@@ -70,7 +70,7 @@ Every project on the site comes from one file: [`data/projects.ts`](./data/proje
 }
 ```
 
-Everything else (`longDescription`, `media`, `features`, `metrics`, `architecture`, `technicalDetails`, `challenges`, `lessonsLearned`, `futurePlans`) is optional — a project detail page only renders the sections that have content. Full field reference in [`lib/types.ts`](./lib/types.ts).
+Everything else (`longDescription`, `media`, `features`, `metrics`, `architecture`, `technicalDetails`, `challenges`, `lessonsLearned`, `futurePlans`) is optional, and a project detail page only renders the sections that have content. Full field reference in [`lib/types.ts`](./lib/types.ts).
 
 If a project has no `media`, its card and detail page fall back to a generated placeholder instead of a broken image. Metrics and evidence should only ever reflect something real.
 
@@ -85,7 +85,7 @@ If a project has no `media`, its card and detail page fall back to a generated p
 | `npm run typecheck` | TypeScript, strict mode |
 | `npm run test` | Unit + component tests (Vitest + React Testing Library) |
 | `npm run test:watch` | Same, in watch mode |
-| `npm run test:e2e` | End-to-end tests (Playwright) — builds and serves the app first |
+| `npm run test:e2e` | End-to-end tests (Playwright). Builds and serves the app first |
 
 ## Deployment
 
