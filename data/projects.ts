@@ -84,4 +84,38 @@ export const projects: Project[] = [
     createdAt: "2026-09-18",
     updatedAt: "2026-10-05",
   },
+  {
+    slug: "portfolio-website",
+    name: "Portfolio Website",
+    shortDescription:
+      "This site: a tested, accessible portfolio with dark mode, built with Next.js and deployed on Vercel.",
+    longDescription:
+      "The portfolio you are looking at. Every project on it comes from a single typed data file, so adding a project is one entry and the home page, archive, search, filters, project pages, sitemap and social cards all update from it. It follows the system light or dark theme with a toggle that remembers the visitor's choice, and is built to be keyboard and screen-reader friendly.",
+    category: "Web",
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vitest", "Playwright", "Vercel"],
+    status: "live",
+    visible: true,
+    featured: true,
+    displayOrder: 3,
+    githubUrl: "https://github.com/John-Wasikye/portfolio",
+    liveUrl: "https://www.johnwasikye.com",
+    media: [
+      {
+        type: "image",
+        src: "/projects/portfolio-site.png",
+        alt: "Screenshot of the portfolio website home page",
+      },
+    ],
+    features: [
+      "Searchable, filterable archive of projects driven by one typed data file",
+      "Light and dark themes that follow the system setting, with a saved toggle and no flash on load",
+      "Accessible navigation: skip link, keyboard focus styles, and reduced-motion support",
+      "Metadata for search and sharing: sitemap, robots, web manifest, and social cards",
+      "Unit and component tests with Vitest and end-to-end tests with Playwright",
+    ],
+    architecture:
+      "A Next.js App Router site written in TypeScript and styled with Tailwind CSS design tokens. Project data lives in one file and is read at build time, so pages are generated statically. GitHub pushes to master deploy automatically on Vercel.",
+    createdAt: "2026-09-03",
+    updatedAt: "2026-10-05",
+  },
 ];
