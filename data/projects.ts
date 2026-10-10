@@ -27,7 +27,7 @@ export const projects: Project[] = [
     status: "completed",
     visible: true,
     featured: true,
-    displayOrder: 2,
+    displayOrder: 3,
     githubUrl: "https://github.com/John-Wasikye/Network_Packet_Analyzer",
     media: [
       {
@@ -97,7 +97,7 @@ export const projects: Project[] = [
     status: "live",
     visible: true,
     featured: true,
-    displayOrder: 3,
+    displayOrder: 4,
     githubUrl: "https://github.com/John-Wasikye/portfolio",
     liveUrl: "https://www.johnwasikye.com",
     media: [
@@ -141,8 +141,8 @@ export const projects: Project[] = [
     ],
     status: "in-development",
     visible: true,
-    featured: false,
-    displayOrder: 4,
+    featured: true,
+    displayOrder: 2,
     features: [
       "A publish step that refuses to publish when a data check fails",
       "A serving API that reads published Parquet with DuckDB and marks old data as late",
