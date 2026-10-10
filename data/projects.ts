@@ -119,4 +119,39 @@ export const projects: Project[] = [
     createdAt: "2026-09-03",
     updatedAt: "2026-10-05",
   },
+  {
+    slug: "will-i-have-signal-out-there",
+    name: "Will I have signal out there?",
+    shortDescription:
+      "A trip planner for hikers and campers that shows where phone carriers and satellite texting should work along a route.",
+    longDescription:
+      "I am building a trip planner for hikers, campers and backpackers. It will show where each carrier has coverage, where it drops out, and when a Starlink Direct-to-Cell satellite text could get through, accounting for canyon walls and mountains that block the sky. The first version covers Grand Canyon National Park. The data platform behind it runs on AWS with Terraform, Airflow, Spark and Iceberg, and serves published data through DuckDB on Lambda.",
+    category: "Data engineering",
+    technologies: [
+      "Python",
+      "Apache Spark",
+      "Apache Iceberg",
+      "Apache Airflow",
+      "DuckDB",
+      "FastAPI",
+      "AWS Lambda",
+      "Terraform",
+      "React",
+      "TypeScript",
+    ],
+    status: "in-development",
+    visible: true,
+    featured: false,
+    displayOrder: 4,
+    features: [
+      "A publish step that refuses to publish when a data check fails",
+      "A serving API that reads published Parquet with DuckDB and marks old data as late",
+      "A status file that shows when each pipeline last ran successfully",
+      "Terraform modules for storage, IAM and budget limits, tested without making AWS calls",
+    ],
+    futurePlans:
+      "Add real trail data, every carrier's coverage, a coverage confidence model, and a trip-planning assistant that cites the data it uses.",
+    createdAt: "2026-10-09",
+    updatedAt: "2026-10-09",
+  },
 ];
