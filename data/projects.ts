@@ -142,7 +142,7 @@ export const projects: Project[] = [
     ],
     status: "in-development",
     visible: true,
-    featured: true,
+    featured: false,
     displayOrder: 2,
     designDocUrl: "/docs/will-i-have-signal-out-there-design-plan.pdf",
     features: [
@@ -153,6 +153,107 @@ export const projects: Project[] = [
     ],
     futurePlans:
       "Add real trail data, every carrier's coverage, a coverage confidence model, and a trip-planning assistant that cites the data it uses.",
+    createdAt: "2026-10-09",
+    updatedAt: "2026-10-09",
+  },
+  {
+    slug: "asteroid-watch",
+    name: "Asteroid Watch",
+    shortDescription:
+      "A daily brief on asteroid close approaches and fireballs, built from NASA JPL data.",
+    longDescription:
+      "I am designing a project that shows daily asteroid close approaches and fireballs from NASA's Jet Propulsion Laboratory, and how each asteroid's predicted pass changes over time. The first version is the Daily Asteroid Brief: an installable web app with a plain-language brief each morning, an archive and an RSS feed, with an optional email edition planned after that. The design is written and the build has not started. The full design plan is available as a PDF.",
+    category: "Data engineering",
+    technologies: ["Python", "Apache Spark", "Apache Iceberg", "Apache Airflow", "dbt", "Snowflake", "AWS Lambda", "Terraform"],
+    status: "in-development",
+    visible: true,
+    featured: false,
+    displayOrder: 5,
+    designDocUrl: "/docs/asteroid-watch-design-plan.pdf",
+    features: [
+      "Daily close approaches and fireballs from the JPL public APIs",
+      "A plain-language brief each morning, with an archive and an RSS feed",
+      "A number check that blocks a brief if a figure in it does not match the data",
+      "An optional email edition in a later phase",
+    ],
+    futurePlans:
+      "Build the first version of the Daily Asteroid Brief, then add the email edition and history questions over past predictions.",
+    createdAt: "2026-10-09",
+    updatedAt: "2026-10-09",
+  },
+  {
+    slug: "ocean-map",
+    name: "Ocean Map",
+    shortDescription:
+      "Pick a point in the ocean and see how much nearby seafloor is unmapped, how much fishing is nearby, and the closest buoy's latest reading.",
+    longDescription:
+      "I am designing a lookup for ocean and coastal points. Enter a location and it shows how much of the nearby seafloor is unmapped, the fishing activity around it, and the nearest buoy's latest reading with the time it was taken. Later phases add a live vessel stream, a cleaned vessel identity table with a human review queue, a classifier for vessel matches, and buoy fault flags, then scale to a full year of ship tracking data. The design is written and the build has not started. The full design plan is available as a PDF.",
+    category: "Data engineering",
+    technologies: ["Python", "Apache Spark", "Apache Iceberg", "Apache Kafka", "dbt", "Snowflake", "AWS Lambda", "Terraform"],
+    status: "in-development",
+    visible: true,
+    featured: false,
+    displayOrder: 6,
+    designDocUrl: "/docs/ocean-map-design-plan.pdf",
+    features: [
+      "Unmapped seafloor near any ocean or coastal point",
+      "Nearby fishing activity, with credit to the data provider",
+      "The nearest buoy's latest reading and when it was taken",
+      "A live vessel stream and a review queue for vessel matches in a later phase",
+    ],
+    futurePlans:
+      "Build the public lookup first, then the live vessel stream, the vessel identity table and the classifier.",
+    createdAt: "2026-10-09",
+    updatedAt: "2026-10-09",
+  },
+  {
+    slug: "shooting-star-forecast",
+    name: "Shooting Star Forecast",
+    shortDescription:
+      "A nightly sky score that tells you how good tonight is for watching shooting stars where you are.",
+    longDescription:
+      "I am designing a forecast that scores tonight's sky for watching meteors at any place in the lower 48 states. The score is a documented formula, not a model. It takes points off for cloud cover, Moon brightness, light pollution and whether a meteor shower is active, and names the factor that hurts the score most. The design is written and the build has not started. The full design plan is available as a PDF.",
+    category: "Data engineering",
+    technologies: ["Python", "Apache Spark", "Apache Iceberg", "dbt", "DuckDB", "FastAPI", "AWS Lambda", "Terraform"],
+    status: "in-development",
+    visible: true,
+    featured: false,
+    displayOrder: 7,
+    designDocUrl: "/docs/shooting-star-forecast-design-plan.pdf",
+    features: [
+      "A sky score for tonight, built from a documented formula",
+      "The top factor that lowers the score: cloud cover, Moon, light pollution or no active shower",
+      "A late notice with the latest earlier data when tonight's score is missing",
+      "A nightly pipeline that publishes the results",
+    ],
+    futurePlans:
+      "Build the lower 48 version first, then add Alaska and Hawaii and a way for people to vote on how the sky looked.",
+    createdAt: "2026-10-09",
+    updatedAt: "2026-10-09",
+  },
+  {
+    slug: "mission-control",
+    name: "Mission Control",
+    shortDescription:
+      "A searchable, playable archive of Apollo 11 Mission Control audio, with an assistant that answers questions using the exact clips.",
+    longDescription:
+      "I am designing an archive of Apollo 11 Mission Control audio. Every spoken line is transcribed and tagged with the console position that spoke it and the Ground Elapsed Time on the mission clock. A timeline shows who was talking at any moment, and an assistant called Ask Mission Control answers questions with the clips that back each answer. A public API exposes the data. The design is written and the build has not started. The full design plan is available as a PDF.",
+    category: "Data engineering",
+    technologies: ["Python", "Whisper", "Apache Spark", "Apache Iceberg", "Apache Airflow", "Databricks", "FastAPI", "AWS Lambda", "Terraform"],
+    status: "in-development",
+    visible: true,
+    featured: false,
+    displayOrder: 8,
+    designDocUrl: "/docs/mission-control-design-plan.pdf",
+    features: [
+      "Search and playback of Apollo 11 Mission Control audio",
+      "Every line transcribed and tagged with its channel and mission time",
+      "A timeline of who was talking at any moment",
+      "Ask Mission Control: questions answered with the exact clips as evidence",
+      "A public API for the transcripts",
+    ],
+    futurePlans:
+      "Build the landing hour first, then widen to the full landing window and add the question-answering assistant.",
     createdAt: "2026-10-09",
     updatedAt: "2026-10-09",
   },
