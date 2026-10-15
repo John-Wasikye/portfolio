@@ -41,6 +41,7 @@ export interface Project {
   displayOrder: number;
   githubUrl?: string;
   liveUrl?: string;
+  designDocUrl?: string;
   media?: ProjectMedia[];
   features?: string[];
   metrics?: ProjectMetric[];
