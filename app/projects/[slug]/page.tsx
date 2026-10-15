@@ -119,6 +119,17 @@ export default async function ProjectDetailPage({
               <FaGithub size={16} aria-hidden="true" />
             </a>
           )}
+          {project.designDocUrl && (
+            <a
+              href={project.designDocUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-accent hover:text-accent"
+            >
+              Design Plan (PDF)
+              <ExternalLink size={16} aria-hidden="true" />
+            </a>
+          )}
         </div>
       </header>
 

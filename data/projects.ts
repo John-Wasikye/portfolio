@@ -143,6 +143,7 @@ export const projects: Project[] = [
     visible: true,
     featured: true,
     displayOrder: 2,
+    designDocUrl: "/docs/will-i-have-signal-out-there-design-plan.pdf",
     features: [
       "A publish step that refuses to publish when a data check fails",
       "A serving API that reads published Parquet with DuckDB and marks old data as late",
