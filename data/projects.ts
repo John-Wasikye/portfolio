@@ -63,6 +63,7 @@ export const projects: Project[] = [
     displayOrder: 1,
     githubUrl: "https://github.com/John-Wasikye/nfl-player-performance",
     liveUrl: "https://nflstats.johnwasikye.com",
+    designDocUrl: "/docs/nfl-player-performance-design-doc.pdf",
     media: [
       {
         type: "image",
