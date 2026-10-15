@@ -142,7 +142,7 @@ export const projects: Project[] = [
     ],
     status: "in-development",
     visible: true,
-    featured: true,
+    featured: false,
     displayOrder: 2,
     designDocUrl: "/docs/will-i-have-signal-out-there-design-plan.pdf",
     features: [
