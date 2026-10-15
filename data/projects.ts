@@ -145,6 +145,13 @@ export const projects: Project[] = [
     featured: false,
     displayOrder: 2,
     designDocUrl: "/docs/will-i-have-signal-out-there-design-plan.pdf",
+    media: [
+      {
+        type: "image",
+        src: "/projects/will-i-have-signal-out-there.svg",
+        alt: "A magnifying glass searching a globe",
+      },
+    ],
     features: [
       "A publish step that refuses to publish when a data check fails",
       "A serving API that reads published Parquet with DuckDB and marks old data as late",
@@ -170,6 +177,13 @@ export const projects: Project[] = [
     featured: false,
     displayOrder: 5,
     designDocUrl: "/docs/asteroid-watch-design-plan.pdf",
+    media: [
+      {
+        type: "image",
+        src: "/projects/asteroid-watch.svg",
+        alt: "An illustration of an asteroid in space",
+      },
+    ],
     features: [
       "Daily close approaches and fireballs from the JPL public APIs",
       "A plain-language brief each morning, with an archive and an RSS feed",
@@ -195,6 +209,13 @@ export const projects: Project[] = [
     featured: false,
     displayOrder: 6,
     designDocUrl: "/docs/ocean-map-design-plan.pdf",
+    media: [
+      {
+        type: "image",
+        src: "/projects/ocean-map.svg",
+        alt: "An illustration of the ocean under a blue sky",
+      },
+    ],
     features: [
       "Unmapped seafloor near any ocean or coastal point",
       "Nearby fishing activity, with credit to the data provider",
@@ -220,6 +241,13 @@ export const projects: Project[] = [
     featured: false,
     displayOrder: 7,
     designDocUrl: "/docs/shooting-star-forecast-design-plan.pdf",
+    media: [
+      {
+        type: "image",
+        src: "/projects/shooting-star-forecast.svg",
+        alt: "An illustration of a shooting star across a night sky",
+      },
+    ],
     features: [
       "A sky score for tonight, built from a documented formula",
       "The top factor that lowers the score: cloud cover, Moon, light pollution or no active shower",
@@ -245,6 +273,13 @@ export const projects: Project[] = [
     featured: false,
     displayOrder: 8,
     designDocUrl: "/docs/mission-control-design-plan.pdf",
+    media: [
+      {
+        type: "image",
+        src: "/projects/mission-control.svg",
+        alt: "An illustration of a rocket wearing a headset",
+      },
+    ],
     features: [
       "Search and playback of Apollo 11 Mission Control audio",
       "Every line transcribed and tagged with its channel and mission time",
