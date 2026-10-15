@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14104A"/><stop offset="0.55" stop-color="#5B2A86"/><stop offset="1" stop-color="#E0527E"/></linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FFF3B0" stop-opacity="0.85"/><stop offset="1" stop-color="#FFF3B0" stop-opacity="0"/></radialGradient>
+    <linearGradient id="tail1" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF6C8"/><stop offset="0.5" stop-color="#FFB86B" stop-opacity="0.7"/><stop offset="1" stop-color="#FF5FA2" stop-opacity="0"/></linearGradient>
+    <linearGradient id="tail2" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9BE7FF" stop-opacity="0.9"/><stop offset="1" stop-color="#9BE7FF" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g fill="#fff">
+    <circle cx="180" cy="190" r="3.5"/><circle cx="360" cy="330" r="2.5"/><circle cx="1300" cy="170" r="3.5"/><circle cx="1470" cy="320" r="2.5"/>
+    <circle cx="240" cy="480" r="2"/><circle cx="560" cy="150" r="2.5"/><circle cx="900" cy="130" r="2.5"/><circle cx="1500" cy="470" r="2"/><circle cx="1380" cy="560" r="2"/><circle cx="130" cy="330" r="2"/><circle cx="700" cy="250" r="2"/>
+  </g>
+  <path d="M1010 330 L330 650 L400 700 L1070 410 Z" fill="url(#tail2)" opacity="0.8"/>
+  <path d="M1000 335 L400 690 L520 720 L1060 405 Z" fill="url(#tail1)"/>
+  <path d="M1040 360 L620 740 L690 740 L1075 410 Z" fill="url(#tail1)" opacity="0.6"/>
+  <g fill="#FFF6C8">
+    <circle cx="760" cy="500" r="5"/><circle cx="620" cy="590" r="4"/><circle cx="880" cy="440" r="4"/><circle cx="520" cy="650" r="3"/>
+  </g>
+  <circle cx="1040" cy="340" r="190" fill="url(#glow)"/>
+  <polygon fill="#FFF3B0" stroke="#FFD25E" stroke-width="8" stroke-linejoin="round" points="1040,225 1070,315 1160,318 1088,374 1114,462 1040,410 966,462 992,374 920,318 1010,315"/>
+  <path d="M1040 150 V210 M1040 470 V530 M930 340 H990 M1090 340 H1150" stroke="#fff" stroke-opacity="0.8" stroke-width="6" stroke-linecap="round"/>
+  <path d="M0 800 L180 680 L330 760 L520 640 L720 770 L900 700 L1100 790 L1300 670 L1460 750 L1600 700 V900 H0Z" fill="#1A0F36"/>
+</svg>
