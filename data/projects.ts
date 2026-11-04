@@ -73,6 +73,7 @@ export const projects: Project[] = [
     ],
     features: [
       "Weekly predictions for every QB, RB, WR, TE and K, each with an 80% range, locked before kickoff and graded afterwards in a public report card against simple baselines",
+      "A frozen copy of the model, trained only on earlier seasons, is locked beside each week, so the report card shows whether retraining during the season actually helps",
       "An ensemble of ridge regression and LightGBM, with ranges calibrated on weeks the model never saw; the code refuses to calibrate on its own training rows",
       "AI-assisted feature search: Claude Code proposes one feature at a time from the model's biggest misses, an automated gate on held-out weeks decides whether it ships, and every result is published in an experiment ledger",
       "Position rankings using a composite score of efficiency and production, plus a PPR fantasy view, with weekly snapshots to show players moving up or down",
@@ -84,7 +85,7 @@ export const projects: Project[] = [
     futurePlans:
       "Add defensive player rankings and build a mobile app on the same published data.",
     createdAt: "2026-09-18",
-    updatedAt: "2026-10-06",
+    updatedAt: "2026-11-04",
   },
   {
     slug: "portfolio-website",
@@ -126,7 +127,7 @@ export const projects: Project[] = [
     shortDescription:
       "A trip planner for hikers and campers that shows where phone carriers and satellite texting should work along a route.",
     longDescription:
-      "I am building a trip planner for hikers, campers and backpackers. It will show where each carrier has coverage, where it drops out, and when a Starlink Direct-to-Cell satellite text could get through, accounting for canyon walls and mountains that block the sky. The first version covers Grand Canyon National Park. The data platform behind it runs on AWS with Terraform, Airflow, Spark and Iceberg, and serves published data through DuckDB on Lambda.",
+      "I am building a trip planner for hikers, campers and backpackers. It will show where each carrier has coverage, where it drops out, and when a Starlink Direct-to-Cell satellite text could get through, accounting for canyon walls and mountains that block the sky. The first version covers Grand Canyon National Park. The data platform behind it is live on AWS: a spot server boots each night to run Airflow and Spark on k3s, writes Iceberg tables to S3, and stops again, while the site and a DuckDB API on Lambda stay up. The nightly run already ingests Starlink orbits, picks out the Direct-to-Cell satellites, loads the park's trails and computes the terrain horizon at every trail point. The site is up with an under-development banner until the coverage and satellite times are real.",
     category: "Data engineering",
     technologies: [
       "Python",
@@ -144,6 +145,7 @@ export const projects: Project[] = [
     visible: true,
     featured: false,
     displayOrder: 2,
+    githubUrl: "https://github.com/John-Wasikye/will-i-have-signal-out-there",
     designDocUrl: "/docs/will-i-have-signal-out-there-design-plan.pdf",
     media: [
       {
@@ -156,12 +158,15 @@ export const projects: Project[] = [
       "A publish step that refuses to publish when a data check fails",
       "A serving API that reads published Parquet with DuckDB and marks old data as late",
       "A status file that shows when each pipeline last ran successfully",
-      "Terraform modules for storage, IAM and budget limits, tested without making AWS calls",
+      "Terraform for separate dev and live environments, applied to AWS, with tests that make no AWS calls",
+      "A nightly server that runs only while there is work to do, saves its Airflow database to S3 and stops itself",
+      "A terrain horizon for every trail point, computed in Spark from Copernicus 30 m elevation tiles, so canyon walls that block the sky are taken into account",
+      "Deploys from GitHub Actions with no stored AWS keys, each one approved before it reaches dev or live",
     ],
     futurePlans:
       "Add real trail data, every carrier's coverage, a coverage confidence model, and a trip-planning assistant that cites the data it uses.",
     createdAt: "2026-10-09",
-    updatedAt: "2026-10-09",
+    updatedAt: "2026-11-04",
   },
   {
     slug: "asteroid-watch",
