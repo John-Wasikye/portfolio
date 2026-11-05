@@ -26,7 +26,7 @@ export const projects: Project[] = [
     technologies: ["C++", "libpcap", "ncurses", "CMake"],
     status: "completed",
     visible: true,
-    featured: true,
+    featured: false,
     displayOrder: 3,
     githubUrl: "https://github.com/John-Wasikye/Network_Packet_Analyzer",
     media: [
@@ -125,9 +125,9 @@ export const projects: Project[] = [
     slug: "will-i-have-signal-out-there",
     name: "Will I have signal out there?",
     shortDescription:
-      "A trip planner for hikers and campers that shows where phone carriers and satellite texting should work along a route.",
+      "A trip planner that shows where T-Mobile claims coverage along Grand Canyon trails, and when a satellite text could get through.",
     longDescription:
-      "I am building a trip planner for hikers, campers and backpackers. It will show where each carrier has coverage, where it drops out, and when a Starlink Direct-to-Cell satellite text could get through, accounting for canyon walls and mountains that block the sky. The first version covers Grand Canyon National Park. The data platform behind it is live on AWS: a spot server boots each night to run Airflow and Spark on k3s, writes Iceberg tables to S3, and stops again, while the site and a DuckDB API on Lambda stay up. The nightly run already ingests Starlink orbits, picks out the Direct-to-Cell satellites, loads the park's trails and computes the terrain horizon at every trail point. The site is up with an under-development banner until the coverage and satellite times are real.",
+      "I built a trip planner for hikers at Grand Canyon National Park. You pick a trail, walk it on a map of the real terrain, and see where T-Mobile claims coverage and when a Starlink Direct-to-Cell satellite text could get through, accounting for the canyon walls that block the sky. It covers Bright Angel, South Kaibab and North Kaibab for the next 24 hours. Every night, a spot server on AWS runs Airflow and Spark, checks the data, publishes it and shuts down. The site keeps working with that server off, because a small API reads the published files with DuckDB on Lambda. It is still under development, and I have not checked its predictions in the field.",
     category: "Data engineering",
     technologies: [
       "Python",
@@ -141,17 +141,18 @@ export const projects: Project[] = [
       "React",
       "TypeScript",
     ],
-    status: "in-development",
+    status: "live",
     visible: true,
-    featured: false,
+    featured: true,
     displayOrder: 2,
     githubUrl: "https://github.com/John-Wasikye/will-i-have-signal-out-there",
+    liveUrl: "https://signal.johnwasikye.com",
     designDocUrl: "/docs/will-i-have-signal-out-there-design-plan.pdf",
     media: [
       {
         type: "image",
-        src: "/projects/will-i-have-signal-out-there.svg",
-        alt: "A magnifying glass searching a globe",
+        src: "/projects/will-i-have-signal-out-there.jpg",
+        alt: "The trail page, with the Bright Angel Trail on a terrain map beside a photo of the canyon",
       },
     ],
     features: [
@@ -164,9 +165,9 @@ export const projects: Project[] = [
       "Deploys from GitHub Actions with no stored AWS keys, each one approved before it reaches dev or live",
     ],
     futurePlans:
-      "Add real trail data, every carrier's coverage, a coverage confidence model, and a trip-planning assistant that cites the data it uses.",
+      "Add every carrier's coverage, measured speed tests and hiker signal reports.",
     createdAt: "2026-10-09",
-    updatedAt: "2026-11-04",
+    updatedAt: "2026-11-05",
   },
   {
     slug: "asteroid-watch",
