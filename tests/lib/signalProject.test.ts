@@ -13,9 +13,24 @@ describe("the signal project", () => {
   });
 
   it("describes what the site does now", () => {
-    expect(signal?.shortDescription).toContain("T-Mobile claims coverage");
+    expect(signal?.shortDescription).toContain("AT&T, T-Mobile and Verizon claim coverage");
     expect(signal?.longDescription).toContain("walk it on a map of the real terrain");
     expect(signal?.longDescription).toContain("I have not checked its predictions in the field");
+  });
+
+  it("no longer describes the earlier version", () => {
+    expect(signal?.longDescription).not.toContain("spot server");
+    expect(signal?.longDescription).not.toContain("still under development");
+    expect(signal?.technologies).toContain("dbt");
+  });
+
+  it("keeps the Terraform and deploy bullets before the new ones", () => {
+    const features = signal?.features ?? [];
+    const terrain = features.findIndex((f) => f.startsWith("A terrain horizon"));
+    expect(features[terrain + 1]).toMatch(/^Terraform for separate dev and live environments/);
+    expect(features[terrain + 2]).toMatch(/^Deploys from GitHub Actions with no stored AWS keys/);
+    expect(features).toHaveLength(9);
+    expect(features.some((f) => f.startsWith("A status file"))).toBe(false);
   });
 
   it("uses a screenshot of the site as its thumbnail", () => {
