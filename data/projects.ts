@@ -161,6 +161,8 @@ export const projects: Project[] = [
       "A serving API that reads published Parquet with DuckDB and marks old data as late",
       "A nightly server that runs only while there is work to do, saves its Airflow database to S3 and stops itself",
       "A terrain horizon for every trail point, computed in Spark from Copernicus 30 m elevation tiles, so canyon walls that block the sky are taken into account",
+      "Terraform for separate dev and live environments, applied to AWS, with tests that make no AWS calls",
+      "Deploys from GitHub Actions with no stored AWS keys, each one approved before it reaches dev or live",
       "Hiker reports that turn the position into an area about 350 m across on the phone, so exact coordinates never leave it, and a report made with no signal waits on the phone until it can be sent",
       "Report counts per area that show only once an area has at least 5 reports in 7 days, so a count cannot point at one hiker",
       "Tested dbt marts, and a nightly run that skips a satellite it cannot place instead of stopping",

@@ -24,6 +24,15 @@ describe("the signal project", () => {
     expect(signal?.technologies).toContain("dbt");
   });
 
+  it("keeps the Terraform and deploy bullets before the new ones", () => {
+    const features = signal?.features ?? [];
+    const terrain = features.findIndex((f) => f.startsWith("A terrain horizon"));
+    expect(features[terrain + 1]).toMatch(/^Terraform for separate dev and live environments/);
+    expect(features[terrain + 2]).toMatch(/^Deploys from GitHub Actions with no stored AWS keys/);
+    expect(features).toHaveLength(9);
+    expect(features.some((f) => f.startsWith("A status file"))).toBe(false);
+  });
+
   it("uses a screenshot of the site as its thumbnail", () => {
     const thumbnail = signal?.media?.[0];
     expect(thumbnail?.src).toBe("/projects/will-i-have-signal-out-there.jpg");
