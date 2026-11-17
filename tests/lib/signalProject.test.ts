@@ -13,9 +13,15 @@ describe("the signal project", () => {
   });
 
   it("describes what the site does now", () => {
-    expect(signal?.shortDescription).toContain("T-Mobile claims coverage");
+    expect(signal?.shortDescription).toContain("AT&T, T-Mobile and Verizon claim coverage");
     expect(signal?.longDescription).toContain("walk it on a map of the real terrain");
     expect(signal?.longDescription).toContain("I have not checked its predictions in the field");
+  });
+
+  it("no longer describes the earlier version", () => {
+    expect(signal?.longDescription).not.toContain("spot server");
+    expect(signal?.longDescription).not.toContain("still under development");
+    expect(signal?.technologies).toContain("dbt");
   });
 
   it("uses a screenshot of the site as its thumbnail", () => {

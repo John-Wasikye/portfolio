@@ -125,9 +125,9 @@ export const projects: Project[] = [
     slug: "will-i-have-signal-out-there",
     name: "Will I have signal out there?",
     shortDescription:
-      "A trip planner that shows where T-Mobile claims coverage along Grand Canyon trails, and when a satellite text could get through.",
+      "A trip planner that shows where AT&T, T-Mobile and Verizon claim coverage along Grand Canyon trails, and when a satellite text could get through.",
     longDescription:
-      "I built a trip planner for hikers at Grand Canyon National Park. You pick a trail, walk it on a map of the real terrain, and see where T-Mobile claims coverage and when a Starlink Direct-to-Cell satellite text could get through, accounting for the canyon walls that block the sky. It covers Bright Angel, South Kaibab and North Kaibab for the next 24 hours. Every night, a spot server on AWS runs Airflow and Spark, checks the data, publishes it and shuts down. The site keeps working with that server off, because a small API reads the published files with DuckDB on Lambda. It is still under development, and I have not checked its predictions in the field.",
+      "I built a trip planner for hikers at Grand Canyon National Park. You pick a trail (Bright Angel, South Kaibab or North Kaibab), walk it on a map of the real terrain, and see where AT&T, T-Mobile and Verizon claim 4G LTE and 5G coverage, from the Federal Communications Commission (FCC) map, with a carrier picker on the map. It also shows when a Starlink Direct-to-Cell satellite text could get through, accounting for the canyon walls that block the sky. Satellite texts need T-Mobile, so that part shows for T-Mobile. Predictions cover the next 24 hours and are refreshed every night, and hikers can report from the trail whether they have signal. Every night, an on-demand server on AWS runs Airflow and Spark, builds tested tables with dbt on DuckDB, checks the data, publishes it and shuts down. The site keeps working with that server off, because a small API reads the published files with DuckDB on Lambda. I have not checked its predictions in the field.",
     category: "Data engineering",
     technologies: [
       "Python",
@@ -140,6 +140,7 @@ export const projects: Project[] = [
       "Terraform",
       "React",
       "TypeScript",
+      "dbt",
     ],
     status: "live",
     visible: true,
@@ -158,16 +159,16 @@ export const projects: Project[] = [
     features: [
       "A publish step that refuses to publish when a data check fails",
       "A serving API that reads published Parquet with DuckDB and marks old data as late",
-      "A status file that shows when each pipeline last ran successfully",
-      "Terraform for separate dev and live environments, applied to AWS, with tests that make no AWS calls",
       "A nightly server that runs only while there is work to do, saves its Airflow database to S3 and stops itself",
       "A terrain horizon for every trail point, computed in Spark from Copernicus 30 m elevation tiles, so canyon walls that block the sky are taken into account",
-      "Deploys from GitHub Actions with no stored AWS keys, each one approved before it reaches dev or live",
+      "Hiker reports that turn the position into an area about 350 m across on the phone, so exact coordinates never leave it, and a report made with no signal waits on the phone until it can be sent",
+      "Report counts per area that show only once an area has at least 5 reports in 7 days, so a count cannot point at one hiker",
+      "Tested dbt marts, and a nightly run that skips a satellite it cannot place instead of stopping",
     ],
     futurePlans:
-      "Add every carrier's coverage, measured speed tests and hiker signal reports.",
+      "Add OpenCelliD tower locations, a confidence rating built from hiker reports and speed tests, a Snowflake warehouse and a trip-planning assistant.",
     createdAt: "2026-10-09",
-    updatedAt: "2026-11-05",
+    updatedAt: "2026-11-17",
   },
   {
     slug: "asteroid-watch",
